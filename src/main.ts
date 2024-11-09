@@ -1,20 +1,14 @@
-import '@pixi/spine-pixi';
-
+import { sound } from '@pixi/sound';
 import { Application } from 'pixi.js';
+
+import { LoadScreen } from './screens/LoadScreen';
 import { initAssets } from './utils/assets';
 import { navigation } from './utils/navigation';
-// import { GameScreen } from './screens/GameScreen';
-// import { HomeScreen } from './screens/HomeScreen';
-import { LoadScreen } from './screens/LoadScreen';
-// import { ResultScreen } from './screens/ResultScreen';
-// import { TiledBackground } from './ui/TiledBackground';
-// import { getUrlParam } from './utils/getUrlParams';
-import { sound } from '@pixi/sound';
 
-// The PixiJS app Application instance, shared across the project
+/** The PixiJS app Application instance, shared across the project */
 export const app = new Application();
 
-// Set up a resize function for the app
+/** Set up a resize function for the app */
 function resize() {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -38,7 +32,7 @@ function resize() {
     navigation.resize(width, height);
 }
 
-// Fire when document visibility changes - lose or regain focus
+/** Fire when document visibility changes - lose or regain focus */
 function visibilityChange() {
     if (document.hidden) {
         sound.pauseAll();
@@ -49,7 +43,7 @@ function visibilityChange() {
     }
 }
 
-// Setup app and initialise assets
+/** Setup app and initialise assets */
 async function init() {
     // Initialize app
     await app.init({
@@ -72,22 +66,8 @@ async function init() {
     // Setup assets bundles (see assets.ts) and start up loading everything in background
     await initAssets();
 
-    // Add a persisting background shared by all screens
-    // navigation.setBackground(TiledBackground);
-
-    // // Show initial loading screen
+    // Show initial loading screen
     await navigation.showScreen(LoadScreen);
-
-    // // Go to one of the screens if a shortcut is present in url params, otherwise go to home screen
-    // if (getUrlParam('game') !== null) {
-    //     await navigation.showScreen(GameScreen);
-    // } else if (getUrlParam('load') !== null) {
-    //     await navigation.showScreen(LoadScreen);
-    // } else if (getUrlParam('result') !== null) {
-    //     await navigation.showScreen(ResultScreen);
-    // } else {
-    //     await navigation.showScreen(HomeScreen);
-    // }
 }
 
 // Init everything

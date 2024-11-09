@@ -3,7 +3,6 @@ import { Container, Sprite, Texture, Ticker, TilingSprite } from 'pixi.js';
 
 import { designConfig } from '../game/designConfig';
 import { PixiLogo } from '../ui/PixiLogo';
-// import { i18n } from '../utils/i18n';
 
 /** The default load screen for the game. */
 export class LoadScreen extends Container {
