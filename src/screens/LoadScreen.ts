@@ -37,7 +37,6 @@ export class LoadScreen extends Container {
         this._spinner.anchor.set(0.5);
         this.addChild(this._spinner);
 
-
         this._pixiLogo = new PixiLogo();
         this._bottomContainer.addChild(this._pixiLogo);
         this.addChild(this._bottomContainer);
